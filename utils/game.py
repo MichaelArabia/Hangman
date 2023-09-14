@@ -12,11 +12,15 @@ class Hangman:
         self.turn_count: int = 0
         self.error_count: int = 0
 
+    @staticmethod
+    def is_valid_input(input_str: str, pattern: str) -> bool:
+        return bool(re.match(pattern, input_str))
+
     def play(self) -> None:
 
         letter: str = input("Enter a letter : ").lower()
  
-        while not re.match("^[a-zA-Z]$", letter):
+        while not Hangman.is_valid_input(letter, "^[a-zA-Z]$"):
             letter = input("Enter a single letter only: ").lower()
 
         self.turn_count += 1
@@ -55,13 +59,9 @@ class Hangman:
 
     def ask_restart(self) -> bool:
         choice = input("Do you want to restart the game ? (y/n): ").lower()
-        while not re.match("^[yn]$", choice):
-            choice = input("Enter only y for yes or n for no").lower()
+        while not Hangman.is_valid_input(choice, "^[yn]$"):
+            choice = input("Enter only y for yes or n for no").lower() 
         return choice == "y"
-    
-    def is_valid_output(input_str: str, pattern: str)-> bool:
-        return bool(re.match(pattern, input_str))
-
 
     def game_over(self) -> None:
         print(f"Game over... The word to guess was : {''.join(self.word_to_find)}")
