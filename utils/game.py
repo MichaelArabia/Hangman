@@ -33,19 +33,38 @@ class Hangman:
     def start_game(self) -> None:
         while self.lives > 0 and '_' in self.correctly_guessed_letters:
             self.play()
-            print("Correctly guessed letters : ", ' '.join(self.correctly_guessed_letters))
-            print("Wrongly guessed letters : ", ' '.join(self.wrongly_guessed_letters))
-            print("Lives : ", self.lives)
-            print("Turn count : ", self.turn_count)
-            print("Error count : ", self.error_count)
+            self.display_game_status()
 
         if self.lives == 0:
             self.game_over()
         else:
             self.well_played()
 
+        if self.ask_restart():
+            print("\nRestarting the game...\n")
+            self.__init__()
+            self.start_game()
+
+
+    def display_game_status(self) -> None:
+        print("Correctly guessed letters:", ' '.join(self.correctly_guessed_letters))
+        print("Wrongly guessed letters:", ' '.join(self.wrongly_guessed_letters))
+        print("Lives:", self.lives)
+        print("Turn count:", self.turn_count)
+        print("Error count:", self.error_count)
+
+    def ask_restart(self) -> bool:
+        choice = input("Do you want to restart the game ? (y/n): ").lower()
+        while not re.match("^[yn]$", choice):
+            choice = input("Enter only y for yes or n for no").lower()
+        return choice == "y"
+    
+    def is_valid_output(input_str: str, pattern: str)-> bool:
+        return bool(re.match(pattern, input_str))
+
+
     def game_over(self) -> None:
-        print("game over")
+        print(f"Game over... The word to guess was : {''.join(self.word_to_find)}")
 
     def well_played(self) -> None:
         print(f"You found the word: {self.word_to_find} in {self.turn_count} turns with {self.error_count} errors")
