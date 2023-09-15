@@ -105,5 +105,5 @@ class Hangman:
     def well_played(self) -> None:
         """Congratulates the user for guessing the word"""
         print(
-            f"You found the word: {self.word_to_find} in {self.turn_count} turns with {self.error_count} errors"
+            f"You found the word: {''.join(self.word_to_find)} in {self.turn_count} turns with {self.error_count} errors"
         )
