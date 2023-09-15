@@ -29,7 +29,7 @@ class Hangman:
 
             Parameters:
                 input_str (str): The input string to validate
-                pattern (str): The regex pattern agains which to validate the input
+                pattern (str): The regex pattern against which to validate the input
 
             Returns:
                 bool: True if input_str matches the pattern, False otherwise
