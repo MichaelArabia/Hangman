@@ -15,13 +15,11 @@ Hangman is a classic word guessing game. In this implementation, players are pro
 
 **Restart Option:** Upon completion, players have the option to restart and play again without needing to relaunch the game.
 
-## Installation and Setup
-
-### Prerequisites:
+## Prerequisites:
 
 Python 3.x
 
-### Installation steps:
+## Installation steps:
 
 - 1 - clone the repository :
 
@@ -36,6 +34,7 @@ python main.py
 ## How to play
 
 - 1 - Once you start the game, you'll be presented with a series of underscores representing the letters of the word you need to guess.
+
 - 2 - Enter a letter as your guess.
 - 3 - The game will provide feedback after each guess, updating the display to show correct guesses, incorrect guesses, and remaining lives.
 - 4 - Continue guessing until you've either guessed the word or run out of lives.
